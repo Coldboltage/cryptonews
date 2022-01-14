@@ -13,7 +13,7 @@ const Context = ({ children }) => {
   const getPostsByQuery = useCallback(
     async (coin) => {
       console.log("calling");
-      const url = `${baseURL}?auth_token=${apiKey}&currenies=${coin}&public=true`;
+      const url = `${baseURL}?auth_token=${apiKey}&currencies=${coin}&public=true`;
       // let url = "https://jsonplaceholder.typicode.com/todos/1"
       const response = await fetch(url, {
         headers: {
@@ -22,6 +22,9 @@ const Context = ({ children }) => {
         responseType: "json",
       });
       const data = await response.json();
+      console.log(coin)
+      console.log(url)
+      console.log(data.results)
       setStories(data.results);
     },
     [apiKey, baseURL]
